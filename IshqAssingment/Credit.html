@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Credit and Debit</title>
+    <script>
+        var users = [];
+        //users.push(user1);
+        function addClient(){
+        var CName = prompt("Please Enter Client Name");
+        var CLimit = +prompt("Please Enter Credit Limit");
+        var TCredit = +prompt("Please Enter Total Credit");
+        var user1 = {
+            name: CName,
+            CreditLimit: CLimit,
+            TotalCredit: TCredit
+        };
+            users.push(user1)
+        }
+        function CreditFunc() {
+            //var CName = prompt("Please Enter Client Name");
+            //var CLimit = +prompt("Please Enter Credit Limit");
+            //var TCredit = +prompt("Please Enter Total Credit");
+            var clName = prompt("Please Enter Client Name");
+            var userFound = false;
+            for (var i = 0; i < users.length; i++) {
+                if (clName == users[i].name) {
+                    userFound = true;
+                    var val = +prompt("Please Enter your Credit");
+
+                    function Customer(CName, TCredit) {
+                        // this.CLimit = CLimit;
+                        this.CName = users[i].name;
+                        this.TCredit = users[i].TotalCredit + val;
+                    }
+
+                    Customer.prototype.credit = function (val) {
+                        if (this.TCredit > users[i].CreditLimit) {
+                            return this.CName + " we can't give you more Credit";
+                        }
+                        else {
+                            this.TCredit += val;
+                            return this.CName + " Ok  your Total Credit became " + this.TCredit;
+                        }
+                    };
+
+                    var Name = new Customer(users[i].name);
+                    alert(Name.credit(val));
+                }
+
+            }
+
+            if (!userFound) {
+                alert("CLIENT NOT FOUND !");
+            }
+        }
+
+           /* var user1 = {
+                name: CName,
+                CreditLimit: CLimit,
+                TotalCredit: TCredit+val
+
+            };
+           // users.push(user1);*/
+
+
+        function DebitFunc() {
+            var DName = prompt("Please Enter Client Name");
+            var userFound = false;
+            for (var i = 0; i < users.length; i++) {
+                if (DName == users[i].name) {
+                    userFound = true;
+                    var Dval = +prompt("Please Enter your debit");
+
+                    function Customer(DName, TCredit) {
+                        this.DName = users[i].name;
+                        this.TCredit = users[i].TotalCredit;
+                    }
+
+                    Customer.prototype.debit = function (Dval) {
+                        if (this.TCredit == 0) {
+                            return "you don't have any credit";
+                        }
+
+                        else if (Dval > this.TCredit) {
+                            Dval -= this.TCredit;
+                            this.TCredit = 0;
+                            return this.DName + " Your Total Credit becomes 0, collect " + Dval;
+                        }
+                        else {
+                            this.TCredit -= Dval;
+                            return DName + " Ok your Total Credit became " + this.TCredit;
+                        }
+
+                    };
+                    var Name = new Customer(users[i].name);
+                    alert(Name.debit(Dval));
+
+
+                    break;
+                }
+            }
+            if (!userFound) {
+                alert("CLIENT NOT FOUND !");
+            }
+        }
+            /*function CD(){
+                  var nName = prompt("Enter Client Name?");
+                var userFound = false;
+                for (var i = 0; i < users.length; i++) {
+                    if (nName === users[i].name) {
+                        userFound= true;
+
+                        while (users[i].length = 0) {
+                            users[i].pop();
+                        }
+                    }
+                }
+                if(!userFound){
+                    alert("Client not found.")
+                }*/
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+<input type="button" id="credit" onclick="CreditFunc()" value="Credit">
+<input type="button" id="debit" onclick="DebitFunc()"value="Debit">
+<input type="button" onclick="addClient()" value="Add Client">
+<!--<input type="button" onclick="CD()" value="Clear Client">-->
+</body>
+</html>
