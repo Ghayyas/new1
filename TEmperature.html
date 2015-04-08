@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Temperature Conversion</title>
+    <script>
+        var ask = prompt("Press F to Convert Celsius into Fahrenheit:\n "
+                +"Or Press C to Convert Fahrenheit into celsius ");
+        if (ask === 'f' || ask === 'F') {
+         var c = prompt("Enter the Temperature Celsius: ");
+            c = parseInt(c);
+            document.write('Your Celsius value is = '+c);
+            f = (c*1.8)+32;
+            Math.round(f);
+            var fr = f.toFixed(2);
+            document.write('<br/><br/>Fahrenheit = ' +fr +'\xB0 F');
+        }
+        else if (ask === 'c' || ask === 'C'){
+            var f = prompt("Enter the Temperature Fahrenheit: ");
+            parseInt(f);
+            document.write("Your Fahrenheit Value is = "+f );
+            c = (f - 32)*1.8;
+            Math.round(c);
+            var cr = c.toFixed(2);
+            document.write('<br/><br/>Celsius = '+c +'\xB0 C');
+        }
+        else{
+            alert("Sorry You Must Press C OR F Only !")
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
